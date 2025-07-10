@@ -20,6 +20,7 @@ HEADER|PAYLOAD|CHECKSUM
 2-byte XOR-based checksum, calculated on the raw bytes of HEADER|PAYLOAD to ensure data integrity
 ### Example Messages
 COMMAND:192.168.1.10:5000:192.168.1.20:5001:5|START|b'\x00G'
+
 ACK:192.168.1.20:5001:192.168.1.10:5000:0||b'\x00%'
 
 ## This custom TCP protocol was implemented on the three main devices of the system, the PC, the Raspberry Pi and the arduino where:
