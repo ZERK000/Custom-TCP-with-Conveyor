@@ -3,7 +3,26 @@ This project's goal was to automate a conveyor belt using our custom TCP protoco
 The conveyor belt had stepper motor and 2 IR sensors to serve our application which was counting
 We developed our custom message format for the protocol and included a fault-handling mechanism for motor and sensor faliures
 
-### This custom TCP protocol was implemented on the three main devices of the system, the PC, the Raspberry Pi and the arduino where:
+## Our Custom TCP Protocol Message Format
+
+HEADER|PAYLOAD|CHECKSUM
+
+### Header Format
+#### TYPE:SENDER_IP:SENDER_PORT:DEST_IP:DEST_PORT:PAYLOAD_SIZE
+- TYPE: COMMAND, ACK, NACK, or ERROR
+- SENDER_IP / DEST_IP: IP addresses of sender/receiver
+- SENDER_PORT / DEST_PORT: TCP ports used
+- PAYLOAD_SIZE: Size of the payload in bytes
+### Payload
+- Contains commands (START, STOP, SPEED:<value>) or error codes (0, 1, 2)
+- Empty in ACK and NACK messages.
+### Checksum
+2-byte XOR-based checksum, calculated on the raw bytes of HEADER|PAYLOAD to ensure data integrity
+### Example Messages
+COMMAND:192.168.1.10:5000:192.168.1.20:5001:5|START|b'\x00G'
+ACK:192.168.1.20:5001:192.168.1.10:5000:0||b'\x00%'
+
+## This custom TCP protocol was implemented on the three main devices of the system, the PC, the Raspberry Pi and the arduino where:
   1- The Raspberry Pi acts as the server, where it forwards the commands from the PC (client) to Arduino or from the Arduino to the PC "Python script"
   
   2- Arduino acts as a Client who controls the conveyor based on the commands received, and returns ACKs or Error states ".ino file (C++)"
