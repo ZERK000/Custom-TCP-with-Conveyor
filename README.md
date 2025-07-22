@@ -39,3 +39,7 @@ Our custom TCP had more features like connection retry, data acknowledgment , an
  
  3- Simulated network congestion and Monitored the effect of packet loss and retransmission of command execution.  
 
+
+## Video 
+[Drive link] https://drive.google.com/drive/folders/1aoq7XVgbf4KcoCpofFLJUl8PVjiPyJMb
+
