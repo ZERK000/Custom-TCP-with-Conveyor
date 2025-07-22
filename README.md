@@ -37,5 +37,5 @@ Our custom TCP had more features like connection retry, data acknowledgment , an
  
  2- Measured the time between sending control commands from sending command to the Raspberry Pi ad Receiving Acks from the Arduino.
  
- 3- Simulated network congestion and Monitored the effect of packet loss and retransmission of command execution.
+ 3- Simulated network congestion and Monitored the effect of packet loss and retransmission of command execution.  
 
